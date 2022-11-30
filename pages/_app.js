@@ -8,10 +8,10 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
-				<title>Opaku | e-Commerve</title>
+				<title>Opaku Store | e-Commerve</title>
 				<meta
 					name="description"
-					content="Opaku is a clothing retail company that is engaged in the development, manufacturing,
+					content="Opaku Store is a clothing retail company that is engaged in the development, manufacturing,
           and sells a wide variety of products for toddlers."
 				/>
 				<meta name="keyword" content="ecommerce, retail, online shop" />

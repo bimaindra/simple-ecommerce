@@ -1,43 +1,46 @@
-import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import CardProduct from '../components/CardProduct';
 
-export default function Home() {
+export async function getStaticProps() {
+	const res = await fetch('https://fakestoreapi.com/products?sort=desc&limit=6');
+	const products = await res.json();
+
+	return {
+		props: {
+			products,
+		},
+	};
+}
+
+export default function Home({ products }) {
 	return (
-		<div className={styles.container}>
-			<main className={styles.main}>
-				<h1 className={styles.title}>
-					Welcome to <a href="https://nextjs.org">Next.js!</a>
-				</h1>
-
-				<p className={styles.description}>
-					Get started by editing <code className={styles.code}>pages/index.js</code>
-				</p>
-
-				<div className={styles.grid}>
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<h2>Documentation &rarr;</h2>
-						<p>Find in-depth information about Next.js features and API.</p>
-					</a>
-
-					<a href="https://nextjs.org/learn" className={styles.card}>
-						<h2>Learn &rarr;</h2>
-						<p>Learn about Next.js in an interactive course with quizzes!</p>
-					</a>
-
-					<a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
-						<h2>Examples &rarr;</h2>
-						<p>Discover and deploy boilerplate example Next.js projects.</p>
-					</a>
-
-					<a
-						href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-						className={styles.card}>
-						<h2>Deploy &rarr;</h2>
-						<p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-					</a>
+		<section className="u-safe-area !pt-0">
+			<div className="container">
+				<div className="prose mt-6 mb-10">
+					<h1 className="text-2xl md:text-3xl lg:text-4xl">Latest Collection</h1>
 				</div>
-			</main>
-		</div>
+				<div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+					{products.map((item) => {
+						return (
+							<CardProduct
+								key={item.id}
+								title={item.title}
+								image={item.image}
+								rating={item.rating}
+								price={item.price}
+								link={`/products/${item.id}`}
+							/>
+						);
+					})}
+				</div>
+				<div className="mt-12 flex justify-center">
+					<Link
+						href="/products"
+						className="mr-2 mb-2 rounded-full bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+						View More Products
+					</Link>
+				</div>
+			</div>
+		</section>
 	);
 }
