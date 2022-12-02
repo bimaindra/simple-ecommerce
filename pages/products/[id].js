@@ -32,7 +32,7 @@ const Detail = ({ product }) => {
 	const handleAddToCart = () => {
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
-			"event": `"add_to_cart"`,
+			"event": "add_to_cart",
 			"product_name": `"${product.title}"`,
 			"product_category": `"${product.category}"`,
 			"product_price": `"${product.price}"`,
