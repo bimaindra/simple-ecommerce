@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import CardProduct from '../../components/CardProduct';
 
 export async function getStaticProps() {
@@ -13,7 +12,6 @@ export async function getStaticProps() {
 }
 
 const Products = ({ products }) => {
-	const [limit, setLimit] = useState(9);
 	return (
 		<section className="u-safe-area !pt-0">
 			<div className="container">
@@ -34,13 +32,13 @@ const Products = ({ products }) => {
 						);
 					})}
 				</div>
-				<div className="mt-12 flex justify-center">
+				{/*<div className="mt-12 flex justify-center">
 					<button
 						type="button"
 						className="mr-2 mb-2 rounded-full bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 						Show More
 					</button>
-				</div>
+				</div>*/}
 			</div>
 		</section>
 	);
