@@ -1,5 +1,7 @@
 import Script from 'next/script';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../store/feature/cart/cartSlice';
 
 export const getStaticPaths = async () => {
 	const res = await fetch(`https://fakestoreapi.com/products`);
@@ -29,20 +31,24 @@ export const getStaticProps = async (context) => {
 };
 
 const Detail = ({ product }) => {
+	const dispatch = useDispatch(addProduct((state) => state.cart));
+
 	const handleAddToCart = () => {
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
-			"event": "add_to_cart",
-			"product_name": `${product.title}`,
-			"product_category": `${product.category}`,
-			"product_price": `${product.price}`,
+			event: 'add_to_cart',
+			product_name: `${product.title}`,
+			product_category: `${product.category}`,
+			product_price: `${product.price}`,
 		});
+
+		dispatch(addProduct(product));
 	};
 
 	return (
 		<>
 			<Script>{`window.dataLayer = window.dataLayer || []; window.dataLayer.push({ "event": "view_product", "product_name": "${product.title}", "product_category": "${product.category}", "product_price": "${product.price}",});`}</Script>
-			<section className="u-safe-area">
+			<section>
 				<div className="container">
 					<div className="prose mx-auto">
 						<h1>{product.title}</h1>

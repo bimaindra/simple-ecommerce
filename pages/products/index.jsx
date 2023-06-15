@@ -15,7 +15,7 @@ const Products = ({ products }) => {
 	return (
 		<section className="u-safe-area !pt-0">
 			<div className="container">
-				<div className="prose mt-6 mb-10">
+				<div className="prose mb-10">
 					<h1 className="text-2xl md:text-3xl lg:text-4xl">Our Product</h1>
 				</div>
 				<div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">

@@ -1,9 +1,9 @@
 const NotFound = () => {
 	return (
-		<section className="u-safe-area">
+		<section>
 			<div className="container">
 				<div className="prose mx-auto">
-					<h1>Page NotFound</h1>
+					<h1>Page Not Found</h1>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod fuga maxime sunt consequuntur. In nobis
 						aperiam voluptatem eum maxime quas esse doloremque minima? Quas tenetur eveniet nam necessitatibus nisi?

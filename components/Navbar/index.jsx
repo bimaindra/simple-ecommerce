@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 	const router = useRouter();
+	const cartItem = useSelector((state) => state.cart.length);
 
 	const linkItems = [
 		{
@@ -28,7 +30,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<header className="rounded border-gray-200 bg-white py-2.5 px-2 shadow-md dark:bg-gray-900 sm:px-4">
+		<header className="fixed top-0 z-50 w-full rounded border-gray-200 bg-white py-2.5 px-2 shadow-md dark:bg-gray-900 sm:px-4">
 			<div className="container mx-auto flex flex-wrap items-center justify-between">
 				<Link href="/" className="flex items-center">
 					<img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6" alt="Flowbite Logo" />
@@ -54,7 +56,7 @@ const Navbar = () => {
 					</svg>
 				</button>
 				<div className="hidden w-full md:block md:w-auto" id="navbar-default">
-					<ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-gray-900">
+					<ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-gray-900">
 						{linkItems.map((linkItem, index) => {
 							return (
 								<li key={index}>
@@ -70,6 +72,19 @@ const Navbar = () => {
 								</li>
 							);
 						})}
+						<Link href={`/cart`}>
+							<button
+								type="button"
+								className="relative inline-flex items-center rounded-lg bg-blue-700 p-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+								<svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
+									<path d="M.5 1a.5.5 0 000 1h1.11l.401 1.607 1.498 7.985A.5.5 0 004 12h1a2 2 0 100 4 2 2 0 000-4h7a2 2 0 100 4 2 2 0 000-4h1a.5.5 0 00.491-.408l1.5-8A.5.5 0 0014.5 3H2.89l-.405-1.621A.5.5 0 002 1H.5zM6 14a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm-1.646-7.646l-3 3a.5.5 0 01-.708 0l-1.5-1.5a.5.5 0 11.708-.708L8 8.293l2.646-2.647a.5.5 0 01.708.708z" />
+								</svg>
+								<span className="sr-only">Cart</span>
+								<div className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-red-500 text-xs font-bold text-white dark:border-gray-900">
+									{cartItem}
+								</div>
+							</button>
+						</Link>
 					</ul>
 				</div>
 			</div>

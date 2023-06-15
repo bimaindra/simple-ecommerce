@@ -1,36 +1,58 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addProduct, removeProduct } from '../../store/feature/cart/cartSlice';
 
 const CardProduct = (props) => {
+	const { id, link, image, title, price, rating = false } = props;
+
+	const dispatch = useDispatch();
+
+	const handleAddToCart = (product) => {
+		dispatch(addProduct(product));
+	};
+
 	return (
-		<div className="group w-full rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
-			<Link href={`${props.link}`}>
+		<div className="group flex w-full flex-col justify-between rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
+			<Link href={`${link}`} className="overflow-hidden p-6">
 				<div className="aspect-w-16 aspect-h-9">
 					<Image
-						src={props.image}
-						alt={props.title}
+						src={image}
+						alt={title}
 						width={200}
 						height={200}
-						className="object-contain object-center transition-transform group-hover:scale-105"
+						priority={true}
+						className="h-full w-full object-contain object-center transition-transform group-hover:scale-105"
 					/>
 				</div>
 			</Link>
-			<div className="mt-4 border-t px-5 pt-4 pb-2">
-				<Link href={`${props.link}`}>
-					<h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{props.title}</h5>
+			<div className="flex flex-col gap-6 border-t p-6">
+				<Link href={`${link}`}>
+					<h5 className="text-xl font-semibold tracking-tight text-gray-900 line-clamp-3 dark:text-white">{title}</h5>
 				</Link>
-				<div className="mt-2.5 mb-5 flex items-center">
-					<span className="mr-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
-						{props.rating.rate}
-					</span>
+				<div className="flex justify-between">
+					<div>
+						<p className="font-medium">Rating:</p>
+						<span className="mr-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
+							{rating.rate}
+						</span>
+					</div>
+					<div>
+						<p className="text-right font-medium">Price:</p>
+						<span className="text-lg font-bold text-gray-900 dark:text-white">${price}</span>
+					</div>
 				</div>
-				<div className="flex items-center justify-between pb-4">
-					<span className="text-3xl font-bold text-gray-900 dark:text-white">${props.price}</span>
+				<div className="flex items-center justify-between gap-3">
 					<Link
-						href={`${props.link}`}
+						href={`${link}`}
 						className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 						View Detail
 					</Link>
+					<button
+						className="rounded-lg bg-emerald-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
+						onClick={() => handleAddToCart(props)}>
+						Add to Cart
+					</button>
 				</div>
 			</div>
 		</div>

@@ -1,9 +1,9 @@
-const Privacy = () => {
+const Contact = () => {
 	return (
-		<section className="u-safe-area">
+		<section>
 			<div className="container">
 				<div className="prose mx-auto">
-					<h1>Privacy Policy</h1>
+					<h1>Contact Us</h1>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod fuga maxime sunt consequuntur. In nobis
 						aperiam voluptatem eum maxime quas esse doloremque minima? Quas tenetur eveniet nam necessitatibus nisi?
@@ -34,4 +34,4 @@ const Privacy = () => {
 	);
 };
 
-export default Privacy;
+export default Contact;
