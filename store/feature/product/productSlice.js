@@ -7,8 +7,8 @@ const initialState = {
 	error: '',
 };
 
-export const fetchProducts = createAsyncThunk('product/fetchProduct', () => {
-	return axios.get(`https://fakestoreapi.com/products?sort=desc&limit=12`).then((response) => response.data);
+export const fetchProducts = createAsyncThunk('product/fetchProduct', async () => {
+	return await axios.get(`https://fakestoreapi.com/products?sort=desc&limit=12`).then((response) => response.data);
 });
 
 const productSlice = createSlice({
