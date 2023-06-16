@@ -72,7 +72,7 @@ const Detail = ({ product }) => {
 							</span>
 							<span className="font-bold">
 								Category <br />
-								<span className="mr-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
+								<span className="mr-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
 									{product.category}
 								</span>
 							</span>
@@ -81,7 +81,7 @@ const Detail = ({ product }) => {
 						<div className="flex justify-end">
 							<button
 								type="button"
-								className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+								className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
 								onClick={() => handleAddToCart()}>
 								Add to Cart
 							</button>
