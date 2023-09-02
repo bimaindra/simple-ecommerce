@@ -22,14 +22,14 @@ const cartSlice = createSlice({
 		removeProduct: (state, action) => {
 			return state.filter((state) => state.id !== action.payload);
 		},
-		addProductItem: (state, action) => {
+		increaseProductItem: (state, action) => {
 			state.map((item) => (item.id === action.payload ? { ...item, count: item.count++ } : null));
 		},
-		reduceProductItem: (state, action) => {
+		decreaseProductItem: (state, action) => {
 			state.map((item) => (item.id === action.payload && item.count > 0 ? { ...item, count: item.count-- } : null));
 		},
 	},
 });
 
-export const { addProduct, removeProduct, addProductItem, reduceProductItem } = cartSlice.actions;
+export const { addProduct, removeProduct, increaseProductItem, decreaseProductItem } = cartSlice.actions;
 export default cartSlice.reducer;

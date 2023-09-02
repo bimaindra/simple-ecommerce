@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeProduct, addProductItem, reduceProductItem } from '../../store/feature/cart/cartSlice';
+import { removeProduct, increaseProductItem, decreaseProductItem } from '../../store/feature/cart/cartSlice';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -13,11 +13,11 @@ const Cart = () => {
 	};
 
 	const handleAddItem = (id) => {
-		dispatch(addProductItem(id));
+		dispatch(increaseProductItem(id));
 	};
 
 	const handleReduceItem = (id) => {
-		dispatch(reduceProductItem(id));
+		dispatch(decreaseProductItem(id));
 	};
 
 	const handleSumPrice = () => {
